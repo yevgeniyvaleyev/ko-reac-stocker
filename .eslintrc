@@ -1,0 +1,18 @@
+{
+  "extends": "airbnb",
+  "plugins": [
+    "async-await",
+    "mocha"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "rules": {
+    "arrow-body-style": "off",
+    "react/prefer-stateless-function": "off"
+  },
+  "env": {
+    "mocha": true
+  }
+}
