@@ -54,4 +54,4 @@ Server uses Webpack development middleware and hot reload middleware for develop
 
 ### Testing
 
-`Mocha` and `Chai` (and other) are used for unit testing.
+`Mocha` and `Chai` (and other) are used for unit testing and plus `Enzyme` for client.
