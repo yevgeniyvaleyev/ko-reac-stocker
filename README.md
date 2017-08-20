@@ -21,8 +21,10 @@ Client uses Material design for interface.
 
 ## Run
 
-- use `npm start` to build and run the app in development mode.
-- use `npm run start-prod` to build and run the app in production mode.
+- use `npm start` to build and run the app in development mode, 
+use `http://localhost:3000/` to open app in a browser.
+- use `npm run start-prod` to build and run the app in production mode, 
+same URL as development mode.
 - use `npm run build` if you just need to bundle client and prepare it for production.
 
 ## Code quality
