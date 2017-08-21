@@ -13,7 +13,7 @@ const CustomGrid = styled(Grid)`
 import { updateStock, addStock } from '../actions';
 
 
-class EditStock extends Component {
+class ManageStock extends Component {
   constructor(props) {
     super(props);
 
@@ -140,7 +140,7 @@ class EditStock extends Component {
   }
 }
 
-EditStock.propTypes = {
+ManageStock.propTypes = {
   router: PropTypes.object.isRequired,
   routeParams: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
@@ -151,5 +151,5 @@ const mapStateToProps = (state) => ({
   getStock: (id) => getStockById(state, id),
 });
 
-export default connect(mapStateToProps)(EditStock);
+export default connect(mapStateToProps)(ManageStock);
 

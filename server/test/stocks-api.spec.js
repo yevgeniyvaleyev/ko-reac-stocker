@@ -51,7 +51,7 @@ describe('server tests', () => {
       const stocks = JSON.parse(response.body);
 
       expect(typeof(stocks)).to.equal('object');
-      stocks[0].id.should.eql(1);
+      stocks[0].id.should.eql(0);
       response.statusCode.should.eql(200);
       response.headers['content-type'].should.match(/application\/json/);
     });
