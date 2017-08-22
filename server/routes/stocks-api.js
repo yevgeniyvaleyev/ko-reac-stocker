@@ -1,14 +1,7 @@
-const generateId = require('../libs/generate-id');
-const { fakeDatabase } = require('../libs/fake-db');
+const db = require('../libs/db-client');
 const argv = require('yargs').argv;
 
 const isErrorDemonstrationMode = !!argv.error_demo_mode;
-
-function findStock(id) {
-  const parsedId = parseInt(id, 10);
-  const stock = fakeDatabase.stocks.find((tmpStock) => tmpStock.id === parsedId);
-  return stock;
-}
 
 function generateCustomError(message, status) {
   const error = new Error(JSON.stringify({ error: message }));
@@ -21,11 +14,11 @@ module.exports.getAll = async (ctx) => {
   if (isErrorDemonstrationMode && Math.random() < 0.7) {
     generateCustomError('Custom server error for demonstration', 500);
   }
-  ctx.body = fakeDatabase.stocks;
+  ctx.body = db.getAllStocks();
 };
 
 module.exports.get = async (ctx) => {
-  const stock = findStock(ctx.params.id);
+  const stock = db.findStock(ctx.params.id);
 
   if (!stock) {
     generateCustomError('Stock does not exist', 404);
@@ -44,18 +37,15 @@ module.exports.put = async (ctx) => {
     generateCustomError('Invalid stock data', 400);
   }
 
-  const stock = {
-    id: generateId(),
+  const stockData = {
     currentPrice,
-    lastUpdate: Date.now(),
     name,
   };
-  fakeDatabase.stocks.push(stock);
-  ctx.body = stock;
+  ctx.body = db.addStock(stockData);
 };
 
 module.exports.update = async (ctx) => {
-  const stock = findStock(ctx.params.id);
+  const stock = db.findStock(ctx.params.id);
 
   const {
     currentPrice,

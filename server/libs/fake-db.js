@@ -1,6 +1,6 @@
 const generateId = require('./generate-id');
 
-module.exports.fakeDatabase = {
+module.exports = {
   stocks: [
     {
       id: generateId(),
