@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { Paper, Toolbar, ToolbarGroup, RaisedButton } from 'material-ui';
 
-import Stocks from './stocks';
+import Stocks from '../containers/stocks';
 
 const style = {
   height: '100%',
