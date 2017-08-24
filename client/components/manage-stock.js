@@ -7,6 +7,7 @@ import styled from 'styled-components';
 
 import { updateStock, addStock } from '../actions';
 import { getStockById } from '../reducers';
+import { inputTypes, isValidInput } from '../utils/form-validation';
 
 
 const CustomGrid = styled(Grid)`
@@ -17,6 +18,8 @@ const CustomGrid = styled(Grid)`
 class ManageStock extends Component {
   constructor(props) {
     super(props);
+    this.onNameChange = this.onNameChange.bind(this);
+    this.onCurrentPriceChange = this.onCurrentPriceChange.bind(this);
 
     const newStock = {
       name: '',
@@ -34,6 +37,14 @@ class ManageStock extends Component {
       dialog: { open: true },
       stock: this.stock,
     };
+  }
+
+  onCurrentPriceChange(event) {
+    this.handleChange('currentPrice', parseInt(event.target.value, 10), inputTypes.number);
+  }
+
+  onNameChange(event) {
+    this.handleChange('name', event.target.value, inputTypes.text);
   }
 
   getTitle() {
@@ -58,20 +69,9 @@ class ManageStock extends Component {
     this.props.router.goBack();
   }
 
-  isValid(value, type) {
-    switch (type) {
-      case 'text':
-        return (typeof(value) === 'string' && value !== '');
-      case 'number':
-        return (!isNaN(value) && value >= 0);
-      default:
-        return true;
-    }
-  }
-
   handleChange(name, value, type) {
     this.setState({
-      isValid: this.isValid(value, type),
+      isValid: isValidInput(value, type),
       stock: {
         ...this.state.stock,
         [name]: value,
@@ -115,8 +115,7 @@ class ManageStock extends Component {
                 <TextField
                   hintText="Enter name"
                   floatingLabelText="Name"
-                  onChange={(event) =>
-                    this.handleChange('name', event.target.value, 'text')}
+                  onChange={this.onNameChange}
                   fullWidth
                   value={name}
                 />
@@ -127,8 +126,7 @@ class ManageStock extends Component {
                   min="0"
                   hintText="Enter current price"
                   floatingLabelText="Current price"
-                  onChange={(event) =>
-                    this.handleChange('currentPrice', parseInt(event.target.value, 10), 'number')}
+                  onChange={this.onCurrentPriceChange}
                   fullWidth
                   value={currentPrice}
                 />
