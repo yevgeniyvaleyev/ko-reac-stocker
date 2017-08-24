@@ -7,9 +7,11 @@ import styled from 'styled-components';
 const Panel = styled(Paper)`
   padding: 10px
 `;
+
 const linkStyle = {
   float: 'right',
 };
+
 const dataCell = {
   display: 'inline-block',
   width: '250px',

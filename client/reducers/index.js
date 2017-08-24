@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import byId, * as fromById from './byId';
-import ids from './ids';
+import byId, * as fromById from './collection-by-id';
+import ids from './ids-list';
 import isFetching from './fetching';
 import errorMessage from './error-message';
 

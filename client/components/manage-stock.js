@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Dialog, FlatButton, TextField } from 'material-ui';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import { getStockById } from '../reducers';
 import styled from 'styled-components';
+
+import { updateStock, addStock } from '../actions';
+import { getStockById } from '../reducers';
+
 
 const CustomGrid = styled(Grid)`
   width: auto
 `;
-
-import { updateStock, addStock } from '../actions';
 
 
 class ManageStock extends Component {

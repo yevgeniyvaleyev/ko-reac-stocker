@@ -1,4 +1,3 @@
-
 import { getIsFetching } from '../reducers';
 import { normalize } from 'normalizr';
 import * as shema from './shema';
