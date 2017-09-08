@@ -6,7 +6,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
 import { updateStock, addStock } from '../actions';
-import { getStockById } from '../reducers';
+import { getStockById, getIsLoaded } from '../reducers';
 import { inputTypes, isValidInput } from '../utils/form-validation';
 
 
@@ -26,9 +26,9 @@ class ManageStock extends Component {
       currentPrice: 0,
     };
 
-    this.dispatch = props.dispatch;
     this.isNewStock = props.routeParams.id === undefined;
-    this.stock = !this.isNewStock
+    this.isInitialized = this.isNewStock || props.isLoaded;
+    this.stock = (!this.isNewStock && props.isLoaded)
       ? props.getStock(props.routeParams.id)
       : newStock;
 
@@ -39,12 +39,34 @@ class ManageStock extends Component {
     };
   }
 
+  shouldComponentUpdate(nextProps) {
+    const { isLoaded } = nextProps;
+
+    return this.isNewStock ? true : isLoaded;
+  }
+
+  componentWillUpdate(nextProps) {
+    const { isLoaded } = nextProps;
+    if (isLoaded && !this.isNewStock && !this.isInitialized) {
+      this.setRestoredStock();
+    }
+  }
+
   onCurrentPriceChange(event) {
     this.handleChange('currentPrice', parseInt(event.target.value, 10), inputTypes.number);
   }
 
   onNameChange(event) {
     this.handleChange('name', event.target.value, inputTypes.text);
+  }
+
+  setRestoredStock() {
+    const { routeParams, getStock } = this.props;
+    const stock = getStock(routeParams.id);
+    this.isInitialized = true;
+    this.setState({
+      stock,
+    });
   }
 
   getTitle() {
@@ -56,7 +78,7 @@ class ManageStock extends Component {
     const action = this.isNewStock
       ? addStock(name, currentPrice)
       : updateStock(name, currentPrice, id);
-    this.dispatch(action);
+    this.props.dispatch(action);
     this.closeDialog();
   }
 
@@ -80,6 +102,15 @@ class ManageStock extends Component {
   }
 
   render() {
+    const {
+      isLoaded,
+    } = this.props;
+
+    const {
+      name,
+      currentPrice,
+    } = this.state.stock;
+
     const actions = [
       <FlatButton
         label="Cancel"
@@ -96,11 +127,6 @@ class ManageStock extends Component {
       />,
     ];
 
-    const {
-      name,
-      currentPrice,
-    } = this.state.stock;
-
     return (
       <div>
         <Dialog
@@ -109,30 +135,33 @@ class ManageStock extends Component {
           open={this.state.dialog.open}
           modal={false}
         >
-          <CustomGrid>
-            <Row>
-              <Col md={6} xs={12} sm={6}>
-                <TextField
-                  hintText="Enter name"
-                  floatingLabelText="Name"
-                  onChange={this.onNameChange}
-                  fullWidth
-                  value={name}
-                />
-              </Col>
-              <Col md={6} xs={12} sm={6}>
-                <TextField
-                  type="number"
-                  min="0"
-                  hintText="Enter current price"
-                  floatingLabelText="Current price"
-                  onChange={this.onCurrentPriceChange}
-                  fullWidth
-                  value={currentPrice}
-                />
-              </Col>
-            </Row>
-          </CustomGrid>
+          {isLoaded &&
+            <CustomGrid>
+              <Row>
+                <Col md={6} xs={12} sm={6}>
+                  <TextField
+                    hintText="Enter name"
+                    floatingLabelText="Name"
+                    onChange={this.onNameChange}
+                    fullWidth
+                    value={name}
+                  />
+                </Col>
+                <Col md={6} xs={12} sm={6}>
+                  <TextField
+                    type="number"
+                    min="0"
+                    hintText="Enter current price"
+                    floatingLabelText="Current price"
+                    onChange={this.onCurrentPriceChange}
+                    fullWidth
+                    value={currentPrice}
+                  />
+                </Col>
+              </Row>
+            </CustomGrid>
+          }
+          {!isLoaded && <p>Loading...</p>}
         </Dialog>
       </div>
     );
@@ -144,10 +173,12 @@ ManageStock.propTypes = {
   routeParams: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   getStock: PropTypes.func.isRequired,
+  isLoaded: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   getStock: (id) => getStockById(state, id),
+  isLoaded: getIsLoaded(state),
 });
 
 export default connect(mapStateToProps)(ManageStock);

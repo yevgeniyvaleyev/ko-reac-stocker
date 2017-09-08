@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
-import { getStocks, getErrorMessage, getIsFetching } from '../reducers';
+import * as actions from '../actions/index';
+import { getStocks, getErrorMessage, getIsFetching } from '../reducers/index';
 import { withRouter } from 'react-router';
 
-import FetchError from './fetch-error';
-import Stock from './stock';
+import FetchError from '../components/fetch-error';
+import StocksList from '../components/stocks-list';
 
 class Stocks extends React.Component {
   componentDidMount() {
@@ -37,14 +37,9 @@ class Stocks extends React.Component {
       );
     }
     return (
-      <div>
-        {stocks.map(stock =>
-          <Stock
-            key={stock.id}
-            {...stock}
-          />
-        )}
-      </div>
+      <StocksList
+        stocks={stocks}
+      />
     );
   }
 }

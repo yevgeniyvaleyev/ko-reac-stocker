@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { Paper, Toolbar, ToolbarGroup, RaisedButton } from 'material-ui';
 
-import Stocks from './stocks';
+import StocksContainer from '../containers/stocks';
 
 const style = {
   height: '100%',
@@ -22,7 +22,7 @@ export default class App extends Component {
               <Link to="/add-stock"><RaisedButton label="Add stock" primary /></Link>
             </ToolbarGroup>
           </Toolbar>
-          <Stocks />
+          <StocksContainer />
         </Paper>
         {this.props.children}
       </div>

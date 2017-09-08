@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
 const convert = require('koa-convert');
+const send = require('koa-send');
 const { devMiddleware, hotMiddleware } = require('koa-webpack-middleware');
 
 const Router = require('koa-router');
@@ -32,9 +33,14 @@ router.post('/api/stocks/:id', stocksApi.update);
 if (!isProduction) {
   const config = getConfig(isProduction);
   const compiler = webpack(config);
+  const isClientRoutePath = /^\/(.*)-stock(?:\/|$)/;
 
   app.use(devMiddleware(compiler));
   app.use(convert(hotMiddleware(compiler)));
+
+  router.get(isClientRoutePath, async (ctx) => {
+    await send(ctx, './client/index.html');
+  });
 }
 
 module.exports = app;
