@@ -41,6 +41,7 @@
     "webpack": "^3.3.0"
   },
   "dependencies": {
+    "mocha": "^3.4.2",
     "babel-polyfill": "^6.23.0",
     "chai": "^4.1.1",
     "config": "^1.26.1",
