@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/yevgeniyvaleyev/ko-reac-stocker.svg?style=svg)](https://circleci.com/gh/yevgeniyvaleyev/ko-reac-stocker)
+
 ## About
 
 This application consists of server and client parts.
