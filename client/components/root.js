@@ -6,7 +6,7 @@ import { Grid } from 'react-flexbox-grid';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import App from './app';
-import ManageStock from './manage-stock';
+import ManageStock from '../containers/manage-stock';
 
 const Root = ({ store }) => (
   <Provider store={store}>
