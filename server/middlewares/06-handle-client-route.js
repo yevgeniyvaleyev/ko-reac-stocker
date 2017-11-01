@@ -12,7 +12,9 @@ module.exports = async (ctx, next) => {
   await next();
   const status = ctx.status || 404;
   if (status === 404) {
-    await send(ctx, path.resolve('../public/index.html'));
+    await send(ctx, 'index.html', {
+      root: path.join(__dirname, '../../public'),
+    });
   }
 };
 
