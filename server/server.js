@@ -14,7 +14,7 @@ const stocksApi = require('./routes/stocks-api');
 const getConfig = require('../config/webpack.config.js');
 const app = new Koa();
 
-const middlewares = fs.readdirSync(path.join(process.env.PWD, 'server', 'middlewares')).sort();
+const middlewares = fs.readdirSync(path.join(__dirname, 'middlewares')).sort();
 
 middlewares.forEach((middleware) => {
   // eslint-disable-next-line global-require
