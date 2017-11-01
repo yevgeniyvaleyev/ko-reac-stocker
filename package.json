@@ -11,6 +11,7 @@
     "test-server": "mocha --compilers js:babel-core/register server/test",
     "test-client": "mocha --compilers js:babel-core/register client/**/*.spec.js",
     "start-prod": "npm run build && node server --production",
+    "heroku-postbuild": "npm run build",    
     "prebuild": "rimraf public && npm run lint",
     "build": "webpack --config config/webpack.config.prod.js -p",
     "lint": "eslint ."

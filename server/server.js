@@ -9,7 +9,7 @@ const { devMiddleware, hotMiddleware } = require('koa-webpack-middleware');
 const Router = require('koa-router');
 const argv = require('yargs').argv;
 
-const isProduction = !!argv.production;
+const isProduction = !!argv.production || process.env.PRODUCTION;
 const stocksApi = require('./routes/stocks-api');
 const getConfig = require('../config/webpack.config.js');
 const app = new Koa();
