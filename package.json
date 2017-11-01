@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Stocks app",
   "main": "server",
+  "engines": {
+    "node": "8.1.2"
+  },
   "scripts": {
     "prestart": "rimraf public",
     "start": "node server",
