@@ -9,9 +9,9 @@
  */
 module.exports = async (ctx, next) => {
   await next();
-  // const status = ctx.status || 404;
-  // if (status === 404) {
-  //   await send(ctx, './public/index.html');
-  // }
+  const status = ctx.status || 404;
+  if (status === 404) {
+    await send(ctx, `${__dirname}/public/index.html`);
+  }
 };
 
