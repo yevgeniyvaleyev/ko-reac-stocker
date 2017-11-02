@@ -1,3 +1,3 @@
 const serve = require('koa-static');
-module.exports = serve('config');
+module.exports = serve('public');
 
