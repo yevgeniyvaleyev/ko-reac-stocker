@@ -22,6 +22,10 @@ const app = new Koa();
 
 const middlewares = fs.readdirSync(path.join(__dirname, 'middlewares')).sort();
 
+const serve = require('koa-static');
+app.use(serve('./public'));
+app.use(serve('./server'));
+
 middlewares.forEach((middleware) => {
   // eslint-disable-next-line global-require
   app.use(require(`./middlewares/${middleware}`));
