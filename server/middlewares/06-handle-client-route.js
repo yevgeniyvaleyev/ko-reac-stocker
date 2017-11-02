@@ -1,5 +1,4 @@
 const send = require('koa-send');
-const path = require('path');
 
 /**
  * Support for clint routes when user reloads a page being
@@ -12,9 +11,7 @@ module.exports = async (ctx, next) => {
   await next();
   const status = ctx.status || 404;
   if (status === 404) {
-    await send(ctx, 'index.html', {
-      root: path.join(__dirname, '../../public'),
-    });
+    await send(ctx, './public/index.html');
   }
 };
 
