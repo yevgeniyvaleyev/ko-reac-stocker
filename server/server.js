@@ -15,7 +15,7 @@ console.log(`
 =============
   ${isProduction}
 =============
-`)
+`);
 const stocksApi = require('./routes/stocks-api');
 const getConfig = require('../config/webpack.config.js');
 const app = new Koa();
