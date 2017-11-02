@@ -49,11 +49,11 @@ if (!isProduction) {
   });
 }
 
-if (isProduction) {
-  const isNotAPIRoutePath = /^(?!.*\/api).*$/;
-  router.get(isNotAPIRoutePath, async (ctx) => {
-    await send(ctx, './public/index.html');
-  });
-}
+//if (isProduction) {
+//  const isNotAPIRoutePath = /^(?!.*\/api).*$/;
+//  router.get(isNotAPIRoutePath, async (ctx) => {
+//    await send(ctx, './public/index.html');
+//  });
+//}
 
 module.exports = app;
