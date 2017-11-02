@@ -1,4 +1,4 @@
-const send = require('koa-send');
+// const send = require('koa-send');
 
 /**
  * Support for clint routes when user reloads a page being
