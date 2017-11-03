@@ -7,7 +7,7 @@
     "node": "8.1.2"
   },
   "scripts": {
-    "prestart": "rimraf public",
+    "prestart": "rimraf dist",
     "start": "node server",
     "start-err": "node server --error_demo_mode",
     "test": "npm run test-server && npm run test-client",
@@ -15,9 +15,11 @@
     "test-client": "mocha --compilers js:babel-core/register client/**/*.spec.js",
     "start-prod": "npm run build && node server --production",
     "heroku-postbuild": "npm run build",
-    "prebuild": "rimraf public",
+    "prebuild": "rimraf dist",
     "build": "webpack --config config/webpack.config.prod.js -p",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "deploy": "git push heroku master",
+    "publish": "git push pb master"
   },
   "devDependencies": {
     "enzyme": "^2.9.1",

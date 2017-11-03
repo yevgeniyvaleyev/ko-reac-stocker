@@ -47,7 +47,7 @@ for demonstration purpose.
 Client is a single page application which is built with `React`, `Redux`,
 `material ui` for visual interface and other.
 Client is bundled with `Webpack` and `Babel`. Application compiled in memory during development
-mode and in auto generated folder `public` (in root) for production mode.
+mode and in auto generated folder `dist` (in root) for production mode.
 Source maps are available in development mode.
 Client code is minified for production. 
  
