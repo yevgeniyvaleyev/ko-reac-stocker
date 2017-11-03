@@ -1,8 +1,5 @@
 [![CircleCI](https://circleci.com/gh/yevgeniyvaleyev/ko-reac-stocker.svg?style=svg)](https://circleci.com/gh/yevgeniyvaleyev/ko-reac-stocker)
 
-[![Heroku](http://heroku-badge.herokuapp.com/?app=ko-reac-stocker&style=flat)]
-(http://ko-reac-stocker.herokuapp.com/)
-
 ## About
 
 This application consists of server and client parts.
