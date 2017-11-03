@@ -18,7 +18,7 @@
     "build": "webpack --config config/webpack.config.prod.js -p",
     "lint": "eslint .",
     "deploy": "git push heroku master",
-    "publish": "git push pb master"
+    "publish": "git push origin master"
   },
   "devDependencies": {
     "enzyme": "^2.9.1",
