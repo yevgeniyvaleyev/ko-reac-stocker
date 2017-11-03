@@ -1,7 +1,6 @@
 [![CircleCI](https://circleci.com/gh/yevgeniyvaleyev/ko-reac-stocker.svg?style=svg)](https://circleci.com/gh/yevgeniyvaleyev/ko-reac-stocker)
 
-[![Heroku](http://heroku-badge.herokuapp.com/?app=ko-reac-stocker&style=flat&svg=1&root=index.html)]
-(http://ko-reac-stocker.herokuapp.com/)
+[![Heroku](http://heroku-badge.herokuapp.com/?app=ko-reac-stocker&style=flat)]
 
 ## About
 
