@@ -7,7 +7,6 @@
     "node": "8.1.2"
   },
   "scripts": {
-    "prestart": "rimraf dist",
     "start": "node server",
     "start-err": "node server --error_demo_mode",
     "test": "npm run test-server && npm run test-client",
