@@ -1,18 +1,17 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { expect } from 'chai';
-
+import renderer from 'react-test-renderer';
 import FetchError from '../fetch-error';
 
-describe('<FetchError>', () => {
-  it('should render component', () => {
-    const data = {
-      message: 'test',
-      onRetry: () => {},
-    };
-    const wrapper = shallow(<FetchError {...data} />);
 
-    expect(wrapper.find('span')).to.have.length(1);
-    expect(wrapper.find('FlatButton')).to.have.length(1);
-  });
+test('should render component', () => {
+  const data = {
+    message: 'test',
+    onRetry: () => {},
+  };
+  const component = renderer.create(
+    <FetchError {...data} />,
+  );
+  const tree = component.toJSON();
+
+  expect(tree).toMatchSnapshot();
 });
