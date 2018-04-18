@@ -22,19 +22,19 @@ test('creates stocks fetching related actions when fetchStocks are called', () =
     lastUpdate: 1524083183202,
   }];
   fetchMock
-    .getOnce('/api/stocks', { body: response, headers: { 'content-type': 'application/json' } })
+    .getOnce('/api/stocks', { body: response, headers: { 'content-type': 'application/json' } });
 
   const expectedActions = [
     { type: 'FETCH_STOCKS_REQUEST' },
     {
       type: 'FETCH_STOCKS_SUCCESS',
-      response: normalize(response, shema.arrayOfStocks)
+      response: normalize(response, shema.arrayOfStocks),
     },
   ];
   const store = mockStore({ ids: [], isLoaded: false });
 
   return store.dispatch(actions.fetchStocks()).then(() => {
     // return of async actions
-    expect(store.getActions()).toEqual(expectedActions)
+    expect(store.getActions()).toEqual(expectedActions);
   });
 });
