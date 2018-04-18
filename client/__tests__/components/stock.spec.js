@@ -1,19 +1,21 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import FetchError from '../fetch-error';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Stock from '../../components/stock';
 
 test('should render component', () => {
   const data = {
-    message: 'test',
-    onRetry: () => {},
+    id: 1,
+    name: 'test',
+    currentPrice: 111,
   };
   const component = renderer.create(
     <MuiThemeProvider>
-      <FetchError {...data} />
+      <Stock {...data} />
     </ MuiThemeProvider>,
   );
   const tree = component.toJSON();
 
   expect(tree).toMatchSnapshot();
 });
+

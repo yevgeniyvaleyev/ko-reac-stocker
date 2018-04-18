@@ -22,18 +22,21 @@
   },
   "devDependencies": {
     "babel-preset-env": "^1.6.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.0.0",
     "eslint-config-airbnb": "^8.0.0",
     "eslint-config-google": "^0.8.0",
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-import": "^1.6.1",
+    "eslint-plugin-jest": "^21.15.0",
     "eslint-plugin-jsx-a11y": "^1.0.4",
-    "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-react": "^5.0.1",
+    "fetch-mock": "^6.3.0",
     "jest": "^22.4.3",
-    "mocha": "^3.4.2",
     "react-test-renderer": "^16.3.2",
-    "redux-devtools-extension": "^2.13.2"
+    "redux-devtools-extension": "^2.13.2",
+    "redux-mock-store": "^1.5.1"
   },
   "dependencies": {
     "babel-cli": "^6.24.1",

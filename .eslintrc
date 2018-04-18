@@ -2,7 +2,7 @@
   "extends": "airbnb",
   "plugins": [
     "async-await",
-    "mocha"
+    "jest"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -13,6 +13,6 @@
     "react/prefer-stateless-function": "off"
   },
   "env": {
-    "mocha": true
+    "jest/globals": true
   }
 }
